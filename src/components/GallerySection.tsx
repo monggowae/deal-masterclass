@@ -1,0 +1,126 @@
+import { useState } from "react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import gallery1 from "@/assets/gallery-1.jpg";
+import gallery2 from "@/assets/gallery-2.jpg";
+import gallery3 from "@/assets/gallery-3.jpg";
+import gallery4 from "@/assets/gallery-4.jpg";
+import gallery5 from "@/assets/gallery-5.jpg";
+import gallery6 from "@/assets/gallery-6.jpg";
+
+const galleryImages = [
+  { src: gallery1, alt: "Training Session", caption: "Intensive Workshop Session" },
+  { src: gallery2, alt: "Certificate Ceremony", caption: "Sertifikasi Alumni" },
+  { src: gallery3, alt: "Negotiation Practice", caption: "Praktik Negosiasi" },
+  { src: gallery4, alt: "Audience Engagement", caption: "Antusiasme Peserta" },
+  { src: gallery5, alt: "Networking Session", caption: "Sesi Networking" },
+  { src: gallery6, alt: "Group Discussion", caption: "Diskusi Kelompok" },
+];
+
+const GallerySection = () => {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const openLightbox = (index: number) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
+  
+  const goToPrev = () => {
+    if (lightboxIndex !== null) {
+      setLightboxIndex(lightboxIndex === 0 ? galleryImages.length - 1 : lightboxIndex - 1);
+    }
+  };
+  
+  const goToNext = () => {
+    if (lightboxIndex !== null) {
+      setLightboxIndex(lightboxIndex === galleryImages.length - 1 ? 0 : lightboxIndex + 1);
+    }
+  };
+
+  return (
+    <section className="relative py-24 px-6">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <p className="text-gold text-sm font-medium tracking-widest uppercase mb-4">
+            Dokumentasi Kegiatan
+          </p>
+          <h2 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-4">
+            Suasana <span className="text-gradient-gold">Training</span>
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Lihat langsung bagaimana suasana eksklusif Deal Maker Academy
+          </p>
+        </div>
+
+        {/* Masonry-style Gallery Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          {galleryImages.map((image, index) => (
+            <div
+              key={index}
+              onClick={() => openLightbox(index)}
+              className={`group relative overflow-hidden rounded-xl cursor-pointer ${
+                index === 0 || index === 3 ? "md:row-span-2" : ""
+              }`}
+            >
+              <div className={`relative ${index === 0 || index === 3 ? "h-full min-h-[300px] md:min-h-[500px]" : "aspect-[4/3]"}`}>
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Caption */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                  <p className="text-foreground font-medium">{image.caption}</p>
+                </div>
+
+                {/* Border glow on hover */}
+                <div className="absolute inset-0 border-2 border-transparent group-hover:border-gold/50 rounded-xl transition-colors duration-500" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Lightbox */}
+      {lightboxIndex !== null && (
+        <div className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm flex items-center justify-center p-4">
+          <button
+            onClick={closeLightbox}
+            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-gold/10 hover:border-gold/50 transition-colors"
+          >
+            <X className="w-6 h-6 text-foreground" />
+          </button>
+
+          <button
+            onClick={goToPrev}
+            className="absolute left-4 md:left-8 w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-gold/10 hover:border-gold/50 transition-colors"
+          >
+            <ChevronLeft className="w-6 h-6 text-foreground" />
+          </button>
+
+          <button
+            onClick={goToNext}
+            className="absolute right-4 md:right-8 w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-gold/10 hover:border-gold/50 transition-colors"
+          >
+            <ChevronRight className="w-6 h-6 text-foreground" />
+          </button>
+
+          <div className="max-w-5xl max-h-[80vh] relative">
+            <img
+              src={galleryImages[lightboxIndex].src}
+              alt={galleryImages[lightboxIndex].alt}
+              className="max-w-full max-h-[80vh] object-contain rounded-xl"
+            />
+            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background/80 to-transparent rounded-b-xl">
+              <p className="text-center text-foreground font-medium text-lg">
+                {galleryImages[lightboxIndex].caption}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+};
+
+export default GallerySection;

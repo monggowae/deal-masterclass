@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const HeroSection = () => {
   const scrollToContent = () => {
@@ -13,28 +14,37 @@ const HeroSection = () => {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[120px]" />
       
       <div className="relative z-10 max-w-4xl mx-auto text-center">
+        {/* Logo */}
+        <div className="mb-8 animate-fade-up opacity-0">
+          <img 
+            src={logo} 
+            alt="Deal Maker Indonesia" 
+            className="w-40 h-40 md:w-52 md:h-52 mx-auto object-contain drop-shadow-[0_0_30px_rgba(212,175,55,0.3)]"
+          />
+        </div>
+
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold/30 bg-gold/5 mb-8 animate-fade-up opacity-0">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold/30 bg-gold/5 mb-6 animate-fade-up opacity-0 animation-delay-100">
           <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
           <span className="text-sm text-gold font-medium tracking-wide uppercase">Offline Intensive Training</span>
         </div>
 
         {/* Main headline */}
-        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold mb-6 animate-fade-up opacity-0 animation-delay-100">
+        <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-up opacity-0 animation-delay-200">
           <span className="text-gradient-gold">Deal Maker</span>
           <br />
           <span className="text-foreground">Academy</span>
         </h1>
 
         {/* Subheadline */}
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up opacity-0 animation-delay-200">
+        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up opacity-0 animation-delay-300">
           Bukan buat ngajarin kamu ngejar prospek.
           <br className="hidden md:block" />
           Tapi bikin kamu jadi <span className="text-gold font-medium">Deal Maker</span> yang mengarahkan.
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-up opacity-0 animation-delay-300">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-up opacity-0 animation-delay-400">
           <Button variant="gold" size="xl" className="group">
             Daftar Sekarang
             <ArrowDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
@@ -45,7 +55,7 @@ const HeroSection = () => {
         </div>
 
         {/* Trust indicator */}
-        <div className="mt-16 pt-8 border-t border-border/50 animate-fade-up opacity-0 animation-delay-400">
+        <div className="mt-16 pt-8 border-t border-border/50 animate-fade-up opacity-0 animation-delay-500">
           <p className="text-sm text-muted-foreground mb-4">Investasi untuk perubahan permanen</p>
           <div className="flex items-center justify-center gap-8 text-gold/70">
             <div className="text-center">

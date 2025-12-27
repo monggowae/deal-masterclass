@@ -4,13 +4,14 @@ import PainPointsSection from "@/components/PainPointsSection";
 import ProblemSection from "@/components/ProblemSection";
 import SolutionSection from "@/components/SolutionSection";
 import WhyOfflineSection from "@/components/WhyOfflineSection";
+import TestimonialSection from "@/components/TestimonialSection";
+import GallerySection from "@/components/GallerySection";
 import PricingSection from "@/components/PricingSection";
 import ClosingSection from "@/components/ClosingSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   useEffect(() => {
-    // Update document title for SEO
     document.title = "Deal Maker Academy - Offline Intensive Training";
   }, []);
 
@@ -21,6 +22,8 @@ const Index = () => {
       <ProblemSection />
       <SolutionSection />
       <WhyOfflineSection />
+      <TestimonialSection />
+      <GallerySection />
       <PricingSection />
       <ClosingSection />
       <Footer />
