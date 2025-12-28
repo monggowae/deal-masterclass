@@ -3,34 +3,34 @@ import speakerImage from "@/assets/speaker.jpg";
 
 const achievements = [
   {
+    icon: BookOpen,
+    value: "207+",
+    label: "Workshop Digelar",
+  },
+  {
     icon: Users,
-    value: "10,000+",
-    label: "Profesional Terlatih",
+    value: "108+",
+    label: "Seminar Online",
   },
   {
     icon: Award,
     value: "15+",
-    label: "Tahun Pengalaman",
-  },
-  {
-    icon: BookOpen,
-    value: "200+",
-    label: "Workshop Digelar",
+    label: "Tahun Digital Marketer",
   },
   {
     icon: TrendingUp,
-    value: "Rp 500M+",
-    label: "Deal Alumni",
+    value: "100+",
+    label: "Alumni Sukses",
   },
 ];
 
 const credentials = [
-  "Certified Master Negotiator - Harvard Business School",
-  "Sales Excellence Coach - Fortune 500 Companies",
-  "Author - 'The Art of High-Ticket Closing'",
-  "Keynote Speaker - TEDx Jakarta",
-  "Former VP Sales - Multinational Corporation",
-  "Business Consultant - 50+ Enterprise Clients",
+  "Digital Marketing Certified Coach",
+  "Deal Maker Coach",
+  "Digital Business Consultant - 27+ Perusahaan",
+  "Author 'Brokerpreneur' Best Seller Book",
+  "Keynote Speaker - Entrepreneur Gathering 7 years",
+  "Flowgrammer AI Automation",
 ];
 
 const SpeakerSection = () => {
@@ -68,10 +68,10 @@ const SpeakerSection = () => {
               {/* Name badge */}
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-1">
-                  Ardi Pratama
+                  Yusuf Shembah
                 </h3>
                 <p className="text-gold font-medium">
-                  Master Negotiator & Sales Strategist
+                  Deal Maker Coach & Digital Business Consultant
                 </p>
               </div>
             </div>
@@ -118,10 +118,10 @@ const SpeakerSection = () => {
             {/* Quote */}
             <div className="relative p-6 rounded-2xl bg-gradient-to-br from-gold/10 to-gold/5 border border-gold/20">
               <p className="text-foreground/90 italic text-lg leading-relaxed">
-                "Closing bukan tentang meyakinkan orang untuk membeli. Ini tentang membantu mereka 
-                membuat keputusan yang tepat — dan Anda menjadi orang yang mereka percaya untuk itu."
+                "Deal Maker adalah Seni Komunikasi supaya orang mengikuti. 
+                Mengikuti arahan, mengikuti penawaran dengan kepercayaan yang Tepat."
               </p>
-              <p className="text-gold font-medium mt-4">— Ardi Pratama</p>
+              <p className="text-gold font-medium mt-4">— Shembah</p>
             </div>
           </div>
         </div>
