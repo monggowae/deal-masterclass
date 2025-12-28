@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Camera } from "lucide-react";
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
@@ -49,17 +49,15 @@ const GallerySection = () => {
           </p>
         </div>
 
-        {/* Masonry-style Gallery Grid */}
+        {/* Uniform Grid - All images with same ratio */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
           {galleryImages.map((image, index) => (
             <div
               key={index}
               onClick={() => openLightbox(index)}
-              className={`group relative overflow-hidden rounded-xl cursor-pointer ${
-                index === 0 || index === 3 ? "md:row-span-2" : ""
-              }`}
+              className="group relative overflow-hidden rounded-xl cursor-pointer"
             >
-              <div className={`relative ${index === 0 || index === 3 ? "h-full min-h-[300px] md:min-h-[500px]" : "aspect-[4/3]"}`}>
+              <div className="relative aspect-[4/3]">
                 <img
                   src={image.src}
                   alt={image.alt}
@@ -70,11 +68,16 @@ const GallerySection = () => {
                 
                 {/* Caption */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                  <p className="text-foreground font-medium">{image.caption}</p>
+                  <p className="text-foreground font-medium text-sm md:text-base">{image.caption}</p>
                 </div>
 
                 {/* Border glow on hover */}
                 <div className="absolute inset-0 border-2 border-transparent group-hover:border-gold/50 rounded-xl transition-colors duration-500" />
+                
+                {/* Camera icon indicator */}
+                <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-background/50 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Camera className="w-4 h-4 text-gold" />
+                </div>
               </div>
             </div>
           ))}
