@@ -1,4 +1,5 @@
-import { Check, Target, Shield, Crown, Zap } from "lucide-react";
+import { Check, Target, Shield, Crown, Zap, ChevronDown } from "lucide-react";
+import { useState } from "react";
 
 const outcomes = [
   { icon: Shield, text: "Tenang saat ditanya harga" },
@@ -7,14 +8,51 @@ const outcomes = [
 ];
 
 const learnings = [
-  "Membaca sinyal keputusan prospek",
-  "Mengarahkan obrolan tanpa terasa jualan",
-  "Menjawab 'kemahalan' tanpa banting harga",
-  "Negosiasi elegan & win-win",
-  "Menutup deal mahal dengan percaya diri",
+  {
+    title: "Membaca Sinyal Keputusan Prospek",
+    description: "Pelajari cara mengidentifikasi tanda-tanda kesiapan beli dari bahasa tubuh, nada bicara, dan pertanyaan prospek.",
+  },
+  {
+    title: "Mengarahkan Obrolan Tanpa Terasa Jualan",
+    description: "Teknik percakapan natural yang membawa prospek ke keputusan tanpa terkesan memaksa atau agresif.",
+  },
+  {
+    title: "Menjawab 'Kemahalan' Tanpa Banting Harga",
+    description: "Framework elegan untuk menangani keberatan harga dengan tetap mempertahankan nilai dan margin.",
+  },
+  {
+    title: "Negosiasi Elegan & Win-Win",
+    description: "Strategi negosiasi yang menghasilkan kesepakatan menguntungkan kedua pihak tanpa merasa kalah.",
+  },
+  {
+    title: "Menutup Deal Mahal dengan Percaya Diri",
+    description: "Mindset dan teknik closing untuk produk/jasa high-ticket dengan keyakinan penuh.",
+  },
+  {
+    title: "Membangun Trust dalam 5 Menit Pertama",
+    description: "Cara cepat membangun kredibilitas dan kepercayaan sejak awal pertemuan dengan prospek.",
+  },
+  {
+    title: "Mengatasi Penolakan dengan Elegan",
+    description: "Teknik mengubah 'tidak' menjadi peluang tanpa terkesan putus asa atau memaksa.",
+  },
+  {
+    title: "Follow Up yang Menghasilkan",
+    description: "Strategi follow up yang tepat waktu dan tepat cara sehingga prospek merasa dihargai, bukan dikejar.",
+  },
+  {
+    title: "Positioning Diri sebagai Expert",
+    description: "Cara memposisikan diri sebagai ahli yang dipercaya sehingga prospek datang kepada Anda.",
+  },
 ];
 
 const SolutionSection = () => {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const toggleExpand = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
   return (
     <section className="relative py-24 px-6">
       {/* Background glow */}
@@ -48,7 +86,7 @@ const SolutionSection = () => {
         </div>
 
         {/* What You'll Learn */}
-        <div className="p-10 rounded-3xl bg-gradient-to-br from-card via-card to-secondary/50 border border-gold/20">
+        <div className="p-8 md:p-10 rounded-3xl bg-gradient-to-br from-card via-card to-secondary/50 border border-gold/20">
           <div className="flex items-center gap-3 mb-8">
             <Zap className="w-6 h-6 text-gold" />
             <h3 className="font-serif text-2xl font-bold text-foreground">
@@ -56,16 +94,39 @@ const SolutionSection = () => {
             </h3>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-3 gap-4">
             {learnings.map((item, index) => (
               <div
                 key={index}
-                className="flex items-start gap-4 p-4 rounded-xl bg-background/50 hover:bg-gold/5 transition-colors"
+                className="rounded-xl bg-background/50 hover:bg-gold/5 transition-colors border border-border/30 overflow-hidden"
               >
-                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mt-0.5">
-                  <Check className="w-4 h-4 text-gold" />
+                <button
+                  onClick={() => toggleExpand(index)}
+                  className="w-full flex items-start gap-3 p-4 text-left"
+                >
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center mt-0.5">
+                    <Check className="w-4 h-4 text-gold" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-foreground/90 font-medium text-sm leading-tight">
+                      {item.title}
+                    </p>
+                  </div>
+                  <ChevronDown 
+                    className={`w-4 h-4 text-muted-foreground flex-shrink-0 transition-transform duration-300 ${
+                      expandedIndex === index ? "rotate-180" : ""
+                    }`} 
+                  />
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    expandedIndex === index ? "max-h-40 pb-4" : "max-h-0"
+                  }`}
+                >
+                  <p className="px-4 pl-[52px] text-muted-foreground text-xs leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
-                <p className="text-foreground/90">{item}</p>
               </div>
             ))}
           </div>
