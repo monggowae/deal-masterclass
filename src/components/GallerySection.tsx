@@ -86,11 +86,11 @@ const GallerySection = () => {
 
       {/* Lightbox */}
       {lightboxIndex !== null && (
-        <div className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[999] bg-background/95 backdrop-blur-sm flex items-center justify-center p-4">
           {/* Close button - positioned for mobile visibility */}
           <button
             onClick={closeLightbox}
-            className="absolute top-4 right-4 z-[110] w-10 h-10 md:w-12 md:h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-gold/10 hover:border-gold/50 transition-colors shadow-lg"
+            className="absolute top-4 right-4 z-[1000] w-10 h-10 md:w-12 md:h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-gold/10 hover:border-gold/50 transition-colors shadow-lg"
           >
             <X className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
           </button>
@@ -98,14 +98,14 @@ const GallerySection = () => {
           {/* Navigation buttons - positioned at center sides with higher z-index */}
           <button
             onClick={goToPrev}
-            className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-[110] w-10 h-10 md:w-12 md:h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-gold/10 hover:border-gold/50 transition-colors shadow-lg"
+            className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-[1000] w-10 h-10 md:w-12 md:h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-gold/10 hover:border-gold/50 transition-colors shadow-lg"
           >
             <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
           </button>
 
           <button
             onClick={goToNext}
-            className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-[110] w-10 h-10 md:w-12 md:h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-gold/10 hover:border-gold/50 transition-colors shadow-lg"
+            className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-[1000] w-10 h-10 md:w-12 md:h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-gold/10 hover:border-gold/50 transition-colors shadow-lg"
           >
             <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
           </button>
