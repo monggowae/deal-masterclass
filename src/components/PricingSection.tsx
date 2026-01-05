@@ -148,9 +148,8 @@ const PricingSection = () => {
                     <SelectValue placeholder="Pilih Jadwal Training" />
                   </SelectTrigger>
                   <SelectContent 
-                    className="bg-card border-border z-[200]"
-                    position="popper"
-                    sideOffset={4}
+                    className="bg-card border-border"
+                    position="item-aligned"
                   >
                     {schedules.map((schedule) => (
                       <SelectItem 
