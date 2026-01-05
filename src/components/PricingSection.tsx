@@ -149,7 +149,11 @@ const PricingSection = () => {
                   </SelectTrigger>
                   <SelectContent 
                     className="bg-card border-border"
-                    position="item-aligned"
+                    position="popper"
+                    side="bottom"
+                    align="start"
+                    sideOffset={4}
+                    avoidCollisions={false}
                   >
                     {schedules.map((schedule) => (
                       <SelectItem 
