@@ -86,36 +86,38 @@ const GallerySection = () => {
 
       {/* Lightbox */}
       {lightboxIndex !== null && (
-        <div className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-sm flex items-center justify-center p-4">
+          {/* Close button - positioned for mobile visibility */}
           <button
             onClick={closeLightbox}
-            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-gold/10 hover:border-gold/50 transition-colors"
+            className="absolute top-4 right-4 z-[110] w-10 h-10 md:w-12 md:h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-gold/10 hover:border-gold/50 transition-colors shadow-lg"
           >
-            <X className="w-6 h-6 text-foreground" />
+            <X className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
           </button>
 
+          {/* Navigation buttons - positioned at center sides with higher z-index */}
           <button
             onClick={goToPrev}
-            className="absolute left-4 md:left-8 w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-gold/10 hover:border-gold/50 transition-colors"
+            className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-[110] w-10 h-10 md:w-12 md:h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-gold/10 hover:border-gold/50 transition-colors shadow-lg"
           >
-            <ChevronLeft className="w-6 h-6 text-foreground" />
+            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
           </button>
 
           <button
             onClick={goToNext}
-            className="absolute right-4 md:right-8 w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-gold/10 hover:border-gold/50 transition-colors"
+            className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-[110] w-10 h-10 md:w-12 md:h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-gold/10 hover:border-gold/50 transition-colors shadow-lg"
           >
-            <ChevronRight className="w-6 h-6 text-foreground" />
+            <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
           </button>
 
-          <div className="max-w-5xl max-h-[80vh] relative">
+          <div className="max-w-5xl max-h-[70vh] relative mx-12 md:mx-20">
             <img
               src={galleryImages[lightboxIndex].src}
               alt={galleryImages[lightboxIndex].alt}
-              className="max-w-full max-h-[80vh] object-contain rounded-xl"
+              className="max-w-full max-h-[70vh] object-contain rounded-xl"
             />
-            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background/80 to-transparent rounded-b-xl">
-              <p className="text-center text-foreground font-medium text-lg">
+            <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 bg-gradient-to-t from-background/80 to-transparent rounded-b-xl">
+              <p className="text-center text-foreground font-medium text-sm md:text-lg">
                 {galleryImages[lightboxIndex].caption}
               </p>
             </div>

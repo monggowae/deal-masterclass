@@ -147,14 +147,18 @@ const PricingSection = () => {
                   <SelectTrigger className="bg-secondary/50 border-border/50 focus:border-gold/50 text-foreground">
                     <SelectValue placeholder="Pilih Jadwal Training" />
                   </SelectTrigger>
-                  <SelectContent className="bg-card border-border">
+                  <SelectContent 
+                    className="bg-card border-border z-[200]"
+                    position="popper"
+                    sideOffset={4}
+                  >
                     {schedules.map((schedule) => (
                       <SelectItem 
                         key={schedule.id} 
                         value={schedule.id}
-                        className="focus:bg-gold/10"
+                        className="focus:bg-gold/10 cursor-pointer"
                       >
-                        <div className="flex items-center justify-between w-full gap-4">
+                        <div className="flex items-center gap-4">
                           <span>{schedule.date}</span>
                           <span className="text-gold text-xs font-medium">
                             Sisa {schedule.seats} seat
